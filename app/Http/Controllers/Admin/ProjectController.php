@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+
 
 class ProjectController extends Controller
 {
@@ -26,7 +29,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin\projects\crate');
     }
 
     /**
@@ -37,7 +40,13 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validation($request);
+        $formData = $request->all();
+        $newProject = new Project();
+        $newProject->fill($formData);
+        $newProject->slug = Str::slug($newProject->title, '-');
+        $newProject->save();
+        return redirect()->route('admin.projects.show', $newProject->slug);
     }
 
     /**
@@ -83,5 +92,26 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         //
+    }
+
+    private function validation($request)
+    {
+
+        $formData = $request->all();
+
+        $validator = Validator::make($formData, [
+            'title' => 'required|max:200',
+            'description' => 'required',
+            'thumb' => 'required',
+
+        ], [
+            'title.required' => 'Il titolo deve essere inserito',
+            'title.max' => 'Il titolo deve avere :max caratteri',
+            'description.required' => 'La descrizione deve essere inserita',
+            'thumb.required' => 'Questo campo non può rimanere vuoto',
+
+        ])->validate();
+
+        return $validator;
     }
 }

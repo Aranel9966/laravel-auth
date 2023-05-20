@@ -8,12 +8,14 @@
     <th>
       Titolo
     </th>
-    <th>Contenuto</th>
     <th>
-      Slug
+      Descrizione
     </th>
     <th>
-      Comandi
+      Link-repo
+    </th>
+    <th>
+      slag
     </th>
   </thead>
 
@@ -23,11 +25,15 @@
     <tr >
       <td>{{$project->title}}</td>
       <td>{{$project->description}}</td>
+      <td> <a href="{{$project->thumb}}">{{$project->thumb}}</a> </td>
       <td>{{$project->slug}}</td>
       <td><a href="{{route('admin.projects.show', $project->slug)}}"><i class="fa-solid fa-magnifying-glass"></i></a></td>
     </tr>
     @endforeach
 
+    <div class="container text-center py-5">
+      <a class="btn btn-primary" href="{{route('admin.projects.create')}}">Aggiungi un progetto</a>
+    </div>
 
   </tbody>
 </table>
