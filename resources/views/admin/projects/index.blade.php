@@ -31,9 +31,9 @@
     </tr>
     @endforeach
 
-    <div class="container text-center py-5">
+    {{-- <div class="container text-center py-5">
       <a class="btn btn-primary" href="{{route('admin.projects.create')}}">Aggiungi un progetto</a>
-    </div>
+    </div> --}}
 
   </tbody>
 </table>

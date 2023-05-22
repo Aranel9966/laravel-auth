@@ -85,10 +85,18 @@
                 </div>
             </div>
         </nav>
+        <div class="d-flex">
 
-        <main class="container">
-            @yield('content')
-        </main>
+            <aside class="side-menu">
+                    <a href="{{route('admin.projects.index')}}">Mostra tutti i progetti</a>
+                <a href="{{route('admin.projects.create')}}">Aggiungi nuovo progetto</a>
+            </aside>
+
+            <main class="container">
+                @yield('content')
+            </main>
+        </div>
+
     </div>
 </body>
 

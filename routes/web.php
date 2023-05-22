@@ -31,9 +31,12 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
-    Route::resource('projects', ProjectController::class)->parameters(['projects' => 'project:slug']);
-    Route::get('/', [DashboardController::class, 'home'])->name('dashboard.home');
-});
+Route::middleware(['auth', 'verified'])
+    ->prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+        Route::resource('projects', ProjectController::class)->parameters(['projects' => 'project:slug']);
+        Route::get('/', [DashboardController::class, 'home'])->name('dashboard.home');
+    });
 
 require __DIR__ . '/auth.php';
