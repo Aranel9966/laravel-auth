@@ -2,6 +2,12 @@
 
 @section('content')
 
+{{-- <form action="{{route('admin.projects.index')}}" method="GET">
+  @csrf
+  <label for="title">search</label>
+  <input type="text" name="title" id="title">
+  <button type="submit"> cerca</button>
+</form> --}}
 
 <table class="mt-5 table table-striped">
   <thead>

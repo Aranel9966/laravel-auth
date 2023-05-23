@@ -5,9 +5,27 @@
 
   <hr>
   
-  <h2>Benvenuto {{Auth::user()->name}} </h2>
+  <div class="container">
+    <h2 class="fs-4 text-secondary my-4">
+      Benvenuto {{Auth::user()->name}} 
+        {{-- {{ __('Dashboard') }} --}}
+    </h2>
+    <div class="row justify-content-center">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">{{ __('User Dashboard') }}</div>
 
-  {{-- <ul>
-    <li><a href="{{route('admin.projects.index')}}">Mostra tutti i post</a></li>
-  </ul> --}}
+                <div class="card-body">
+                    @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                    @endif
+
+                    {{ __('You are logged in!') }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

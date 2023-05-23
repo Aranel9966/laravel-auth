@@ -4,7 +4,7 @@
 .side-menu {
     display: flex;
     flex-flow: column;
-    gap: 2em;
+    gap: 1em;
 
     // height: 100%;
 
@@ -17,10 +17,12 @@
     padding: 40px 10px;
     border-radius:0 0 8px;
 
+    color: #c7c8bf;
     a{
         color: #c7c8bf;
+
         text-decoration: none;
-        padding: 2px;
+        padding: 8px;
         &:hover{
             background-color: #212529;
             color: white;

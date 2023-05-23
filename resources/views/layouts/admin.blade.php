@@ -88,7 +88,20 @@
         <div class="d-flex">
 
             <aside class="side-menu">
-                    <a href="{{route('admin.projects.index')}}">Mostra tutti i progetti</a>
+                <form class="row row-cols-lg-auto g-3 align-items-center" action="{{route('admin.projects.index')}}" method="GET">
+                    @csrf
+
+                    <div class="col-12">
+                        <label class="visually-hidden" for="title">Search</label>
+                        <div class="input-group">
+                          <div class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></div>
+                          <input type="text" class="form-control" id="title" name="title" placeholder="Search">
+                          <button class="btn btn-secondary " type="submit"> Cerca</button>
+                        </div>
+                      </div>
+                </form>
+                <a class="nav-link" href="{{url('/admin') }}">{{ __('Home') }}</a>
+                <a href="{{route('admin.projects.index')}}">Mostra tutti i progetti</a>
                 <a href="{{route('admin.projects.create')}}">Aggiungi nuovo progetto</a>
             </aside>
 
